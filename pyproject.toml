@@ -1,0 +1,18 @@
+[project]
+name = "web_ai_cli"
+version = "0.1.0"
+description = "Tiny CLI that asks the web via GPT‑4o search‑preview"
+requires-python = ">=3.10"
+dependencies = [
+    "typer[all]>=0.9",
+    "rich>=13.7",
+    "python-dotenv>=1.0",
+    "openai>=1.14",
+]
+
+[project.scripts]
+webai = "web_ai_cli.cli:app"
+
+# Optional test deps
+[project.optional-dependencies]
+test = ["pytest"]

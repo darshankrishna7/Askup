@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.scripts]
-webai = "web_ai_cli.cli:app"
+askup = "web_ai_cli.cli:app"
 
 # Optional test deps
 [project.optional-dependencies]

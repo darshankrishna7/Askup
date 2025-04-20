@@ -1,19 +1,20 @@
 from __future__ import annotations
 import asyncio
+from typing import Optional
 import typer
-from typing import Annotated, List, Optional
 from rich.console import Console
 from web_ai_cli.providers.openai_search import OpenAISearchProvider
 from web_ai_cli.utils.display import print_answer
 
 app = typer.Typer(add_completion=False)
-_console = Console()
-_provider = OpenAISearchProvider()
+console = Console()
+provider = OpenAISearchProvider()
 
 
-@app.callback()
+@app.callback(invoke_without_command=True)
 def main(
-    question: Optional[str] = typer.Option(
+    ctx: typer.Context,
+    q: Optional[str] = typer.Option(
         None,
         "-q",
         "--question",
@@ -26,16 +27,19 @@ def main(
         help="Search context size: small | medium | large (defaults to env config)",
     ),
 ):
-    """webai: ask the web from your terminal 🧠"""
-    if not question:
-        _console.print("[bold red]No question given. Use -q or --question.[/]")
-        raise typer.Exit(1)
+    """webai – Ask the web from your terminal 🧠"""
 
+    # If no question provided, just show help and exit.
+    if q is None:
+        console.print(ctx.get_help())
+        raise typer.Exit()
+
+    # If user supplied a different context size, patch provider for this call.
     if context:
-        _provider._context_size = context  # type: ignore
+        provider.context_size = context  # type: ignore[attr-defined]
 
-    answer = asyncio.run(_provider.ask(question))
-    print_answer(question, answer)
+    answer = asyncio.run(provider.ask(q))
+    print_answer(q, answer)
 
 
 if __name__ == "__main__":  # pragma: no cover

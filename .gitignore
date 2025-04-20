@@ -1,3 +1,4 @@
 /.env
 /env
 /web_ai_cli.egg-info
+__pycache__/

@@ -1,6 +1,6 @@
 [project]
 name = "askup"
-version = "0.1.0"
+version = "0.1.1"
 description = "Tiny CLI that asks the web via GPT‑4o search‑preview"
 requires-python = ">=3.10"
 dependencies = [

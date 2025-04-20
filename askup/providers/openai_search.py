@@ -2,8 +2,8 @@ from __future__ import annotations
 import asyncio
 from typing import List
 from openai import AsyncOpenAI, BadRequestError
-from web_ai_cli.config import get_settings
-from web_ai_cli.providers.base import Provider, Answer, Source
+from askup.config import get_settings
+from askup.providers.base import Provider, Answer, Source
 
 
 class OpenAISearchProvider(Provider):

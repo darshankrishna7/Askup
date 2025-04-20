@@ -3,8 +3,8 @@ import asyncio
 from typing import Optional
 import typer
 from rich.console import Console
-from web_ai_cli.providers.openai_search import OpenAISearchProvider
-from web_ai_cli.utils.display import print_answer
+from askup.providers.openai_search import OpenAISearchProvider
+from askup.utils.display import print_answer
 
 app = typer.Typer(add_completion=False)
 console = Console()

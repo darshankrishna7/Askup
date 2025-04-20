@@ -12,7 +12,7 @@ load_dotenv(dotenv_path=Path(".env"), override=False)
 @dataclass(slots=True)
 class Settings:
     api_key: str = os.getenv("OPENAI_API_KEY", "")
-    model: str = os.getenv("WEB_AI_MODEL", "gpt-4o-search-preview")
+    model: str = os.getenv("WEB_AI_MODEL", "gpt-4o-mini-search-preview-2025-03-11")
     context_size: str = os.getenv("WEB_AI_SEARCH_CONTEXT_SIZE", "medium")
 
     @property

@@ -11,6 +11,7 @@ app = typer.Typer(
     add_completion=False,
     no_args_is_help=True,
     help="Ask the web from your terminal 🧠",
+    version=__version__,
     pretty_exceptions_enable=True,
     pretty_exceptions_show_locals=False,
     context_settings={"help_option_names": ["-h", "--help"]},
@@ -18,8 +19,6 @@ app = typer.Typer(
 console = Console()
 provider = OpenAISearchProvider()
 
-
-app.version = __version__
 
 @app.callback(invoke_without_command=True)
 def main(

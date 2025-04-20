@@ -5,11 +5,21 @@ import typer
 from rich.console import Console
 from askup.providers.openai_search import OpenAISearchProvider
 from askup.utils.display import print_answer
+from . import __version__
 
-app = typer.Typer(add_completion=False)
+app = typer.Typer(
+    add_completion=False,
+    no_args_is_help=True,
+    help="Ask the web from your terminal 🧠",
+    pretty_exceptions_enable=True,
+    pretty_exceptions_show_locals=False,
+    context_settings={"help_option_names": ["-h", "--help"]},
+    )
 console = Console()
 provider = OpenAISearchProvider()
 
+
+app.version = __version__
 
 @app.callback(invoke_without_command=True)
 def main(
